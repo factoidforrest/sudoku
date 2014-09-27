@@ -3,7 +3,16 @@
 	.board
 		.innerwrap
 			table.roottable
-				tr
-					td.box
-					td.box
-					td.box
+				- for (var row = 0; row < 3; ++row) {
+					tr
+						- for (var col = 0; col < 3; ++col) {
+							td(class="zone_#{row}_#{col}")
+								table
+									- for (var subrow = 0; subrow < 3; ++subrow) {
+										tr
+											-for (var subcol = 0; subcol < 3; ++subcol) {
+												td(class="box_#{subrow}_#{subcol}")
+											- }
+									-}
+						- }
+				- }

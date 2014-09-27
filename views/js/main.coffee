@@ -15,9 +15,11 @@ requirejs.config
 
 require [
   "jquery"
-  "./game"
+  "libs/sudokugen"
   "bootstrap"
 ], ($, Game) -> 
-  #console.log "Requirejs finished load"
-  console.log(Game)
+  window.board = new Sudoku()
+  board = window.board
+  board.level = 1
+  board.newGame()
   # {}
