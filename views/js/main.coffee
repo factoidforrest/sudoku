@@ -15,8 +15,9 @@ requirejs.config
 
 require [
   "jquery"
+  "./game"
   "bootstrap"
-], ($) -> {
+], ($, Game) -> 
   #console.log "Requirejs finished load"
+  console.log(Game)
   # {}
-}
