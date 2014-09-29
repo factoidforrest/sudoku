@@ -16,6 +16,12 @@ body {
 	background-color: #2c3e50;
 }
 
+// boxes which are set by the AI
+.fixed {
+
+}
+
+//board wrapper
 .outerwrap {
 	text-align: center;
 	padding: 20px 0 20px;
@@ -63,7 +69,9 @@ body {
 						}
 					}
 				}
-				
+				.editable:hover {
+					background-color: #D6D5D4;
+				}
 				.box {
 					width: 33%;
 					height: 33%;
@@ -72,6 +80,10 @@ body {
 					border-style: dashed;
 					border-width: 2px 2px 0 0;
 					cursor: default;
+					text-align: center;
+					color: #777777;
+					font-size: 2.5em;
+					transition: background-color 0.5s;
 					/*
 					.outer-box-div {
 						height: 100%;

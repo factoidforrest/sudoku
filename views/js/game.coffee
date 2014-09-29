@@ -3,7 +3,20 @@ define ["jquery", "libs/sudokugen"], ($) ->
 		constructor: ->
 			@sudoku = new Sudoku
 			@sudoku.level = 1
-			@sudoku.newGame()
+			this.newGame()
 			console.log(@sudoku.matrix)
+
+		newGame: ->
+			@sudoku._newGame()
+			this.render()
+		render: ->
+			for num, i in @sudoku.matrix
+				box = $('.box_' + i)
+				if num != 0
+					box.children('span').text(num)
+					box.addClass("fixed")
+				else	
+					box.addClass("editable")
+
 
 	return Game
