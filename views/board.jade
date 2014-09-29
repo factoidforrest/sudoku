@@ -3,6 +3,7 @@
 	.board
 		.innerwrap
 			table.roottable
+				- var box = 0;
 				- for (var row = 0; row < 3; ++row) {
 					tr.rootrow
 						- for (var col = 0; col < 3; ++col) {
@@ -11,9 +12,10 @@
 									- for (var subrow = 0; subrow < 3; ++subrow) {
 										tr
 											-for (var subcol = 0; subcol < 3; ++subcol) {
-												td(class="box_#{subrow}_#{subcol} box")
-													div.outer-box-div
-														div
+												td(class="box_#{box} box")
+													- ++box;
+													span
+														
 											- }
 									-}
 						- }

@@ -2,3 +2,4 @@ node_modules
 *.css
 *.html
 public/main.js
+public/game.js

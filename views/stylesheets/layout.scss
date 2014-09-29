@@ -41,6 +41,9 @@ body {
 				border: #AAA solid 2px;
 				color: #777;
 				border-radius: 6px;
+				.rootrow {
+					height: 180px;
+				}
 				.zone {
 					border-color: #AAA;
 					border-style: solid;
@@ -49,13 +52,18 @@ body {
 				.innertable {
 					height: 100%;
 					width: 100%;
-					td {
-						/* border-width: 0 2px 0 0; */
+					tr:first-child {
+						td.box {
+							border-width: 0 2px 0 0;
+						}
+					}
+					tr {
+						td:last-child {
+							border-right: 0;
+						}
 					}
 				}
-				.rootrow {
-					height: 180px;
-				}
+				
 				.box {
 					width: 33%;
 					height: 33%;
@@ -64,7 +72,7 @@ body {
 					border-style: dashed;
 					border-width: 2px 2px 0 0;
 					cursor: default;
-					transition: 0.2s;
+					/*
 					.outer-box-div {
 						height: 100%;
 						position: relative;
@@ -72,7 +80,10 @@ body {
 							height: 100%;
 							width: 100%;
 						}
+
 					}
+					*/
+
 				}
 			}
 		}
