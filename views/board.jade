@@ -12,7 +12,7 @@
 									- for (var subrow = 0; subrow < 3; ++subrow) {
 										tr
 											-for (var subcol = 0; subcol < 3; ++subcol) {
-												td(class="box_#{box} box")
+												td(class="box_#{box} box", data-box=box)
 													- ++box;
 													span
 														

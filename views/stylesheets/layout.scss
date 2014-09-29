@@ -70,7 +70,10 @@ body {
 					}
 				}
 				.editable:hover {
-					background-color: #D6D5D4;
+					background-color: #f4f4f4;
+				}
+				.box.selected {
+					box-shadow: inset 0 0 20px #999999;
 				}
 				.box {
 					width: 33%;
