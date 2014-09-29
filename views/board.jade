@@ -4,14 +4,16 @@
 		.innerwrap
 			table.roottable
 				- for (var row = 0; row < 3; ++row) {
-					tr
+					tr.rootrow
 						- for (var col = 0; col < 3; ++col) {
-							td(class="zone_#{row}_#{col}")
-								table
+							td(class="zone_#{row}_#{col} zone")
+								table(class="innertable")
 									- for (var subrow = 0; subrow < 3; ++subrow) {
 										tr
 											-for (var subcol = 0; subcol < 3; ++subcol) {
-												td(class="box_#{subrow}_#{subcol}")
+												td(class="box_#{subrow}_#{subcol} box")
+													div.outer-box-div
+														div
 											- }
 									-}
 						- }

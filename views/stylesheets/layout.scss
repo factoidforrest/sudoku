@@ -41,9 +41,38 @@ body {
 				border: #AAA solid 2px;
 				color: #777;
 				border-radius: 6px;
-
+				.zone {
+					border-color: #AAA;
+					border-style: solid;
+					border-width: 2px 2px 0 0;
+				}
+				.innertable {
+					height: 100%;
+					width: 100%;
+					td {
+						/* border-width: 0 2px 0 0; */
+					}
+				}
+				.rootrow {
+					height: 180px;
+				}
 				.box {
-					
+					width: 33%;
+					height: 33%;
+					font-size: 3em;
+					border-color: #CCC;
+					border-style: dashed;
+					border-width: 2px 2px 0 0;
+					cursor: default;
+					transition: 0.2s;
+					.outer-box-div {
+						height: 100%;
+						position: relative;
+						div {
+							height: 100%;
+							width: 100%;
+						}
+					}
 				}
 			}
 		}
