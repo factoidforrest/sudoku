@@ -1158,10 +1158,10 @@ function Sudoku() {
 			{
 				var val = this.matrix[i * 9 + j];
 				if((val == 0) || (this._checkVal(this.matrix, i, j, val) == false))
-					return 0;
+					return false;
 			}
 		}
-
-		return timeDiff.end();
+		return true;
+		//return timeDiff.end();
 	}
 }
