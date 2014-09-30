@@ -33,7 +33,7 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				if !isNaN(pressed) 
 					num = parseInt(pressed)
 					if (num != 0)
-						playIfPossible(num, self.selected)
+						self.playIfPossible(num, self.selected)
 
 			$('.editable').click (e) ->
 				console.log("clicked")
@@ -50,11 +50,31 @@ define ["jquery", "libs/sudokugen"], ($) ->
 					console.log("selecting")
 					$(this).addClass('selected')
 					self.selected = parseInt($(this).attr('data-box'))
+					contents = $(this).children('span')
+					#clear it if it was holding something. this is how delete works
+					if contents.text() != ''
+						contents.text('')
+						self.sudoku.setVal(self.indexToCoords(self.selected)..., 0)
+
+
+		playIfPossible: (num, index) ->
+			[row, col] = @indexToCoords(index)
+			console.log("row is "+ row + " and col is " + col)
+			valid = @sudoku.checkVal(row, col, num)
+			console.log("legal move? " + valid)
+			if valid
+				@sudoku.setVal(row, col, num)
+				$('.box_' + index).children('span').text(num)
+				self.selected = null
+				$('.selected').removeClass('selected')
+
+		indexToCoords: (i) ->
+			col = i % 9
+			row = (i - col) / 9 
+			return [row, col]
 
 
 	return Game
 
-playIfPossible = (num, index) ->
-	col = index % 9
-	row = (index - col) / 9 
-	console.log("row is "+ row + " and col is " + col)
+
+

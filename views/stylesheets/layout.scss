@@ -16,91 +16,91 @@ body {
 	background-color: #2c3e50;
 }
 
-// boxes which are set by the AI
-.fixed {
 
-}
 
 //board wrapper
 .outerwrap {
 	text-align: center;
 	padding: 20px 0 20px;
+}
 
-	.board {
-		display: inline-block;
-		width: 60%;
-		max-width: 550px;
-		min-width: 430px;
-		position: relative;
-		font-size: 12px;
+.board {
+	display: inline-block;
+	width: 60%;
+	max-width: 550px;
+	min-width: 430px;
+	position: relative;
+	font-size: 12px;
+}
+.innerwrap {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
 
-		.innerwrap {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			right: 0;
-			left: 0;
+.roottable {
+	width: 100%;
+	height: 100%;
+	border: #AAA solid 2px;
+	color: #777;
+	border-radius: 6px;
+}
+.rootrow {
+	height: 180px;
+}
 
-			.roottable {
-				width: 100%;
-				height: 100%;
-				border: #AAA solid 2px;
-				color: #777;
-				border-radius: 6px;
-				.rootrow {
-					height: 180px;
-				}
-				.zone {
-					border-color: #AAA;
-					border-style: solid;
-					border-width: 2px 2px 0 0;
-				}
-				.innertable {
-					height: 100%;
-					width: 100%;
-					tr:first-child {
-						td.box {
-							border-width: 0 2px 0 0;
-						}
-					}
-					tr {
-						td:last-child {
-							border-right: 0;
-						}
-					}
-				}
-				.editable:hover {
-					background-color: #f4f4f4;
-				}
-				.box.selected {
-					box-shadow: inset 0 0 20px #999999;
-				}
-				.box {
-					width: 33%;
-					height: 33%;
-					font-size: 3em;
-					border-color: #CCC;
-					border-style: dashed;
-					border-width: 2px 2px 0 0;
-					cursor: default;
-					text-align: center;
-					color: #777777;
-					font-size: 2.5em;
-					transition: background-color 0.5s;
-					/*
-					.outer-box-div {
-						height: 100%;
-						position: relative;
-						div {
-							height: 100%;
-							width: 100%;
-						}
-
-					}
-					*/
-
-				}
-			}
+.zone {
+	border-color: #AAA;
+	border-style: solid;
+	border-width: 2px 2px 0 0;
+}
+.innertable {
+	height: 100%;
+	width: 100%;
+	tr:first-child {
+		td.box {
+			border-width: 0 2px 0 0;
 		}
 	}
+	tr {
+		td:last-child {
+			border-right: 0;
+		}
+	}
+}
+
+// boxes which are set by the AI
+.fixed {
+	//background-color: #FAFAFA;
+}
+
+//user editable box
+.box.editable:hover {
+	background-color: #f4f4f4;
+	color: red;
+}
+
+.box.editable {
+	color : rgb(112, 196, 185);
+	transition: background-color 0.5s;
+	transition: color 0.8s;
+}
+
+.box.selected {
+	box-shadow: inset 0 0 20px #999999;
+}
+
+.box {
+	width: 33%;
+	height: 33%;
+	font-size: 3em;
+	border-color: #CCC;
+	border-style: dashed;
+	border-width: 2px 2px 0 0;
+	cursor: default;
+	text-align: center;
+	color: #777777;
+	font-size: 2.5em;
 }
