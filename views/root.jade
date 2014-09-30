@@ -7,12 +7,13 @@ html(lang="en")
   body
     div(class="topbar")
       .container
-        ul(class="nav nav-pills nav-justified", role="tablist")
-          li.active
-            a.home(href=".") Play
-          li 
-            a.resume(href=".") Source
-          li
-            a.source(href=".") About
         h1 Sudoku
+    .container
+      ul(class="nav nav-pills nav-justified main-nav", role="tablist")
+        li.active
+          a.home(href=".") Play
+        li 
+          a.resume(href=".") Source
+        li
+          a.source(href=".") About
     include ./board.jade
