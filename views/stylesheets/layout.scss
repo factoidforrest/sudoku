@@ -51,7 +51,20 @@ body {
 	border: #AAA solid 2px;
 	color: #777;
 	border-radius: 6px;
+
 }
+
+.win-dialog {
+	visibility: hidden;
+	z-index: 100;
+	padding-top: 200px;
+}
+
+//added to roottable when game is won
+.finished {
+	opacity: 0.4;
+}
+
 .rootrow {
 	height: 180px;
 }

@@ -10,10 +10,17 @@ html(lang="en")
         h1 Sudoku
     .container
       ul(class="nav nav-pills nav-justified main-nav", role="tablist")
-        li.active
+
+        li(class=section === "play" ? "active" : "")
           a.home(href=".") Play
-        li 
-          a.resume(href=".") Source
-        li
-          a.source(href=".") About
-    include ./board.jade
+        li(class=section === "source" ? "active" : "")
+          a.resume(href="source") Source
+        li(class=section === "about" ? "active" : "")
+          a.source(href="about") About
+    - if (section === "play") {
+      include ./board.jade
+    - } 
+    - else if (section === "source") {
+      include ./github.jade
+    - }
+    

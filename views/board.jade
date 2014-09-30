@@ -1,6 +1,15 @@
-
+ul(class="nav nav-pills nav-justified main-nav", role="tablist")
+  li(class='easy')
+    a.home(href=".") Play
+  li(class='medium')
+    a.resume(href="source") Source
+  li(class='hard')
+    a.source(href="about") About
 .outerwrap
 	.board
+		.win-dialog
+			h1 You won!
+			h2 Click to reset
 		.innerwrap
 			table.roottable
 				- var box;// = 0;

@@ -865,7 +865,6 @@ function Sudoku() {
 		this.save = this.matrix;
 
 		// set the masked matrix as the puzzle.
-		console.log("setting matrix as the mask");
 		this.matrix = mask;
 
 		timeDiff.start();

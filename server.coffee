@@ -31,7 +31,7 @@ app.use(coffeescript({
 app.use(express.static(__dirname + '/public'))
 
 #static file routes
-app.get('/:section', handlers.root)
+app.get('/:section?', handlers.root)
 
 app.listen(process.env.PORT || 3000)
 
