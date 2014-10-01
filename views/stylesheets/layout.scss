@@ -72,6 +72,11 @@ body {
 	visibility: hidden;
 	z-index: 100;
 	padding-top: 200px;
+	left: 50%;
+	div {
+		position: relative;
+		left: -50%
+	}
 }
 
 //added to roottable when game is won
