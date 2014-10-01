@@ -18,6 +18,10 @@ require [
   "game"
   "bootstrap"
 ], ($, Game) -> 
-  window.game = new Game()
+  if $('.board').length > 0
+    #put it in the global namespace for easy debugging
+    window.game = new Game()
+  
+  
   
   

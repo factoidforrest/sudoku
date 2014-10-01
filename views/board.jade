@@ -1,10 +1,4 @@
-ul(class="nav nav-pills nav-justified main-nav", role="tablist")
-  li(class='easy')
-    a.home(href=".") Play
-  li(class='medium')
-    a.resume(href="source") Source
-  li(class='hard')
-    a.source(href="about") About
+
 .outerwrap
 	.board
 		.win-dialog
@@ -30,3 +24,12 @@ ul(class="nav nav-pills nav-justified main-nav", role="tablist")
 									-}
 						- }
 				- }
+
+ul(class="nav nav-pills nav-justified difficulty", role="tablist")
+	li(class="easy")
+		a.home(href=".") Easy
+	li(class="medium")
+		a.resume(href=".") Medium
+	li(class="hard")
+		a.source(href=".") Hard
+		
