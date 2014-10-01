@@ -5,25 +5,26 @@ coffeescript = require('connect-coffee-script')
 handlers = require('./server/handlers')
 sass = require('node-sass')
 
+production = if process.env.PRODUCTION == 'true' then true else false
+
 app.set('views', __dirname + '/views')
 app.use(express.logger())
 
-app.locals.uglify = false
+app.locals.uglify = production
 
 app.set('view engine', 'jade')
 
 app.use(sass.middleware({
     src: __dirname + '/views/stylesheets',
     dest: __dirname + '/public',
-    debug: true#,
-    #outputStyle: 'compressed'
+    debug: if production then false else true,
+    outputStyle: if production then 'compressed' else 'nested'
 }))
 
 
 app.use(coffeescript({
   src: __dirname + '/views/js',
   dest: __dirname + '/public',
-  force: true,
   bare: true
 }))
 
