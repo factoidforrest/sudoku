@@ -27,7 +27,7 @@ define ["jquery", "libs/sudokugen"], ($) ->
 		removeListeners: ->
 			$(document).unbind('keypress')
 			$('.editable').unbind('click')
-			$('.finished').unbind('click')
+			$('.board').unbind('click')
 			$('.diff-setting').unbind('click')
 
 		registerListeners: ->
@@ -64,11 +64,6 @@ define ["jquery", "libs/sudokugen"], ($) ->
 						contents.text('')
 						self.sudoku.setVal(self.indexToCoords(self.selected)..., 0)
 
-			$('.board').on 'click', '.finished', =>
-				console.log("resetting")
-				@clean()
-				@newGame()
-
 			$('.diff-setting').on 'click', () ->
 				console.log('difficulty changed')
 				$('.diff-setting.active').removeClass('active')
@@ -88,7 +83,11 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				$('.selected').removeClass('selected')
 				if @sudoku.gameFinished()
 					$('.win-dialog').css('visibility', 'visible')
-					$('.innerwrap').addClass('finished').click =>
+					$('.innerwrap').addClass('finished')
+					$('.board').click =>
+						console.log("resetting")
+						@clean()
+						@newGame()
 						@newGame()
 
 		clean: () =>
