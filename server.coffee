@@ -7,6 +7,7 @@ sass = require('node-sass')
 
 production = if process.env.PRODUCTION == 'true' then true else false
 
+app.use(express.compress())
 app.set('views', __dirname + '/views')
 app.use(express.logger())
 
@@ -17,15 +18,17 @@ app.set('view engine', 'jade')
 app.use(sass.middleware({
     src: __dirname + '/views/stylesheets',
     dest: __dirname + '/public',
-    debug: if production then false else true,
+    debug: !production,
     outputStyle: if production then 'compressed' else 'nested'
+
 }))
 
-
+#TODO: switch to a compiler with compression support
 app.use(coffeescript({
   src: __dirname + '/views/js',
   dest: __dirname + '/public',
-  bare: true
+  bare: true,
+  compress: production
 }))
 
 #static assets

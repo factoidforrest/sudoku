@@ -4,7 +4,7 @@ define ["jquery", "libs/sudokugen"], ($) ->
 
 		constructor: ->
 			@sudoku = new Sudoku
-			@sudoku.level = 2
+			@sudoku.level = $('.difficulty').children('.active').attr('data-diff')
 			this.newGame()
 			console.log(@sudoku.matrix)
 	
@@ -28,6 +28,7 @@ define ["jquery", "libs/sudokugen"], ($) ->
 			$(document).unbind('keypress')
 			$('.editable').unbind('click')
 			$('.finished').unbind('click')
+			$('.diff-setting').unbind('click')
 
 		registerListeners: ->
 			self = this
@@ -62,14 +63,18 @@ define ["jquery", "libs/sudokugen"], ($) ->
 					if contents.text() != ''
 						contents.text('')
 						self.sudoku.setVal(self.indexToCoords(self.selected)..., 0)
+
 			$('.board').on 'click', '.finished', =>
 				console.log("resetting")
-				@removeListeners()
-				$('.finished').removeClass('finished')
-				$('.fixed').removeClass("fixed")
-				$('.editable').removeClass("editable")
-				$('.win-dialog').css('visibility', 'hidden')
+				@clean()
 				@newGame()
+
+			$('.diff-setting').on 'click', () ->
+				console.log('difficulty changed')
+				$('.diff-setting.active').removeClass('active')
+				$(this).addClass('active')
+				self.clean()
+				self.newGame()
 
 		playIfPossible: (num, index) ->
 			[row, col] = @indexToCoords(index)
@@ -81,12 +86,17 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				$('.box_' + index).children('span').text(num)
 				self.selected = null
 				$('.selected').removeClass('selected')
-				console.log("did you win yet? " + @sudoku.gameFinished())
 				if @sudoku.gameFinished()
 					$('.win-dialog').css('visibility', 'visible')
 					$('.innerwrap').addClass('finished').click =>
 						@newGame()
 
+		clean: () =>
+			@removeListeners()
+			$('.finished').removeClass('finished')
+			$('.fixed').removeClass("fixed")
+			$('.editable').removeClass("editable")
+			$('.win-dialog').css('visibility', 'hidden')
 
 		indexToCoords: (i) ->
 			col = i % 9

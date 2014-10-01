@@ -6,7 +6,7 @@
 			h2 Click to reset
 		.innerwrap
 			table.roottable
-				- var box;// = 0;
+				- var box;
 				- for (var row = 0; row < 3; ++row) {
 					tr.rootrow
 						- for (var col = 0; col < 3; ++col) {
@@ -17,7 +17,6 @@
 											-for (var subcol = 0; subcol < 3; ++subcol) {
 												- box = ((row * 3 + subrow) * 9) + (col * 3 + subcol) 
 												td(class="box_#{box} box", data-box=box)
-													-// ++box;
 													span
 														
 											- }
@@ -26,10 +25,10 @@
 				- }
 
 ul(class="nav nav-pills nav-justified difficulty", role="tablist")
-	li(class="easy")
-		a.home(href=".") Easy
-	li(class="medium")
-		a.resume(href=".") Medium
-	li(class="hard")
-		a.source(href=".") Hard
+	li(class="easy diff-setting", data-diff="0")
+		a.home(href="javascript:;") Easy
+	li(class="medium diff-setting", class="active", data-diff="1")
+		a.resume(href="javascript:;") Medium
+	li(class="hard diff-setting", data-diff="2")
+		a.source(href="javascript:;") Hard
 		
