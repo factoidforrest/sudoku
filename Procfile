@@ -1,1 +1,1 @@
-web: ubersudoku run:app
+web: coffee server.coffee
