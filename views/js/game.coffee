@@ -40,14 +40,12 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				pressed = String.fromCharCode(e.charCode) 
 				console.log("user pressed " + pressed)
 				#if user entered a number
-				if !isNaN(parseInt(pressed))
-					num = parseInt(pressed)
-					if (num != 0)
-						self.playIfPossible(num, self.selected)
+				num = parseInt(pressed)
+				if !isNaN(num) and (num != 0)
+					self.playIfPossible(num, self.selected)
 
 			$('.editable').on 'click', (e) ->
 				console.log("clicked")
-
 				console.log($(this).attr('data-box'))
 				if $(this).hasClass('selected')
 					unselecting = true
@@ -91,6 +89,11 @@ define ["jquery", "libs/sudokugen"], ($) ->
 						@clean()
 						@newGame()
 						@newGame()
+			else
+				$('.box_' + @selected).addClass('wrong')
+				setTimeout( () ->
+					$('.wrong').removeClass('wrong')
+				, 1000)
 
 		clean: () =>
 			@removeListeners()
