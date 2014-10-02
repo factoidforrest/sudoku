@@ -24,6 +24,12 @@
 									-}
 						- }
 				- }
+
+.selection
+	- for (var n = 1; n < 10; ++n) {
+		span(class="choice choice_#{n}", data-choice=n) #{n}
+	-}
+
 ul(class="nav nav-pills nav-justified difficulty", role="tablist")
 	li(class="easy diff-setting", data-diff="0")
 		a.home(href="javascript:;") Easy

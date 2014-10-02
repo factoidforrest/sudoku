@@ -29,7 +29,7 @@ define ["jquery", "libs/sudokugen"], ($) ->
 			$('.editable').unbind('click')
 			$('.board').unbind('click')
 			$('.diff-setting').unbind('click')
-			$('.selected').removeClass('selected')
+			$('.active').unbind('click')
 			@selected = null
 
 		registerListeners: ->
@@ -58,11 +58,16 @@ define ["jquery", "libs/sudokugen"], ($) ->
 					console.log("selecting")
 					$(this).addClass('selected')
 					self.selected = parseInt($(this).attr('data-box'))
+					self.showAvailable(self.selected)
 					contents = $(this).children('span')
 					#clear it if it was holding something. this is how delete works
 					if contents.text() != ''
 						contents.text('')
 						self.sudoku.setVal(self.indexToCoords(self.selected)..., 0)
+
+			$('.selection').on 'click', '.active', () ->
+				num = parseInt($(this).attr('data-choice'))
+				self.playIfPossible(num, self.selected)
 
 			$('.diff-setting').on 'click', () ->
 				console.log('difficulty changed')
@@ -80,6 +85,8 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				@sudoku.setVal(row, col, num)
 				$('.box_' + index).children('span').text(num)
 				self.selected = null
+				#clear number choice box
+				$('.selection').children('.active').removeClass('active')
 				$('.selected').removeClass('selected')
 				if @sudoku.gameFinished()
 					$('.win-dialog').css('visibility', 'visible')
@@ -95,8 +102,17 @@ define ["jquery", "libs/sudokugen"], ($) ->
 					$('.wrong').removeClass('wrong')
 				, 1000)
 
+		showAvailable: (selected) ->
+			available = []
+			@sudoku.getAvailable(@sudoku.matrix, @selected, available)
+			console.log("the available numbers are ", available)
+			$('.choice').removeClass('active')
+			for num in available
+				$('.choice_' + num).addClass('active')
+
 		clean: () =>
 			@removeListeners()
+			$('.selected').removeClass('selected')
 			$('.finished').removeClass('finished')
 			$('.fixed').removeClass("fixed")
 			$('.editable').removeClass("editable")
