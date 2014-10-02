@@ -5,7 +5,7 @@ coffeescript = require('connect-coffee-script')
 handlers = require('./server/handlers')
 sass = require('node-sass')
 
-production = if process.env.PRODUCTION == 'true' then true else false
+production = process.env.PRODUCTION == 'true'
 
 app.use(express.compress())
 app.set('views', __dirname + '/views')
