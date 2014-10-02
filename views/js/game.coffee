@@ -6,13 +6,11 @@ define ["jquery", "libs/sudokugen"], ($) ->
 			@sudoku = new Sudoku
 			@sudoku.level = $('.difficulty').children('.active').attr('data-diff')
 			this.newGame()
-			console.log(@sudoku.matrix)
-	
+
 		newGame: ->
 			@sudoku._newGame()
 			this.render()			
 			this.registerListeners()
-
 
 		render: ->
 			for num, i in @sudoku.matrix
@@ -35,18 +33,15 @@ define ["jquery", "libs/sudokugen"], ($) ->
 		registerListeners: ->
 			self = this
 			$(document).on 'keypress', (e) ->
-				console.log("key pressed")
-				console.log(e)
+
 				pressed = String.fromCharCode(e.charCode) 
-				console.log("user pressed " + pressed)
+
 				#if user entered a number
 				num = parseInt(pressed)
 				if !isNaN(num) and (num != 0)
 					self.playIfPossible(num, self.selected)
 
 			$('.editable').on 'click', (e) ->
-				console.log("clicked")
-				console.log($(this).attr('data-box'))
 				if $(this).hasClass('selected')
 					unselecting = true
 				else
@@ -54,8 +49,8 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				$('.selected').removeClass('selected')
 				if unselecting
 					self.selected = null
+					$('.selection').children('.active').removeClass('active')
 				else
-					console.log("selecting")
 					$(this).addClass('selected')
 					self.selected = parseInt($(this).attr('data-box'))
 					self.showAvailable(self.selected)
@@ -70,7 +65,6 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				self.playIfPossible(num, self.selected)
 
 			$('.diff-setting').on 'click', () ->
-				console.log('difficulty changed')
 				$('.diff-setting.active').removeClass('active')
 				$(this).addClass('active')
 				self.clean()
@@ -78,9 +72,7 @@ define ["jquery", "libs/sudokugen"], ($) ->
 
 		playIfPossible: (num, index) ->
 			[row, col] = @indexToCoords(index)
-			console.log("row is "+ row + " and col is " + col)
 			valid = @sudoku.checkVal(row, col, num)
-			console.log("legal move? " + valid)
 			if valid
 				@sudoku.setVal(row, col, num)
 				$('.box_' + index).children('span').text(num)
@@ -92,10 +84,9 @@ define ["jquery", "libs/sudokugen"], ($) ->
 					$('.win-dialog').css('visibility', 'visible')
 					$('.innerwrap').addClass('finished')
 					$('.board').click =>
-						console.log("resetting")
 						@clean()
 						@newGame()
-						@newGame()
+
 			else
 				$('.box_' + @selected).addClass('wrong')
 				setTimeout( () ->
@@ -105,7 +96,6 @@ define ["jquery", "libs/sudokugen"], ($) ->
 		showAvailable: (selected) ->
 			available = []
 			@sudoku.getAvailable(@sudoku.matrix, @selected, available)
-			console.log("the available numbers are ", available)
 			$('.choice').removeClass('active')
 			for num in available
 				$('.choice_' + num).addClass('active')
