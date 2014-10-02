@@ -32,7 +32,7 @@ app.use(coffeescript({
 }))
 
 #static assets
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public', { maxAge: 86400000 }))
 
 #static file routes
 app.get('/:section?', handlers.root)
