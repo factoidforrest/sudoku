@@ -31,8 +31,13 @@ app.use(coffeescript({
   compress: production
 }))
 
+if production
+	cachetime = 86400000
+else
+	cachetime = 0
+	
 #static assets
-app.use(express.static(__dirname + '/public', { maxAge: 86400000 }))
+app.use(express.static(__dirname + '/public', { maxAge: cachetime }))
 
 #static file routes
 app.get('/:section?', handlers.root)
