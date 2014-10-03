@@ -4,13 +4,15 @@ app = express()
 coffeescript = require('connect-coffee-script')
 handlers = require('./server/handlers')
 sass = require('node-sass')
+path = require('path')
+favicon = require('serve-favicon')
 
 production = process.env.PRODUCTION == 'true'
 
 app.use(express.compress())
 app.set('views', __dirname + '/views')
 app.use(express.logger())
-
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')))
 app.locals.uglify = production
 
 app.set('view engine', 'jade')

@@ -14,7 +14,8 @@
     "twitter-bootstrap-node": "~0.1.2",
     "connect-coffee-script": "~0.2.0",
     "coffee-script": "~1.7.1",
-    "coffee": "0.0.1"
+    "coffee": "0.0.1",
+    "serve-favicon": "~2.1.5"
   },
   "devDependencies": {
     "coffee-script": "~1.7.1"
