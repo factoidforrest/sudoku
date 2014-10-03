@@ -19,6 +19,18 @@ body, html {
   margin: 0;
   padding: 0;
 }
+a {
+	color: #428bca;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+
+table {
+	border-collapse: collapse;
+}
 
 .topbar h1 {
 	margin-top: 5px;
@@ -57,18 +69,33 @@ body, html {
 	}
 }
 
-.navigation-row {
+.nav {
 	margin-top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	width:100%;
-	max-width: 550px;
+	white-space: nowrap;
 	a {
-		width: 33%;
+		width: 33.3333%;
 		display: inline-block;
 		text-align: center;
+		padding: 10px 0;
+		border-radius: 6px;
+	}
+
+	.active {
+		color: #fff;
+		background-color: #428bca;
 	}
 }
+
+.main-nav {
+	max-width: 800px;
+}
+
+
+
+
 
 //board wrapper
 .outerwrap {
@@ -79,14 +106,11 @@ body, html {
 .difficulty {
 	max-width: 550px;
 	//min-width: 430px;
-	width: 100%;
-	margin-left: auto;
-  margin-right: auto;
   margin-bottom: 35px !important;
 
   border-style: solid;
   border-width: 1px;
-  border-radius: 5px;
+  border-radius: 6px;
   border-color: #C1CCD8;
   background-color: white;
 }

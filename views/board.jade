@@ -29,12 +29,8 @@
 	- for (var n = 1; n < 10; ++n) {
 		span(class="choice choice_#{n}", data-choice=n) #{n}
 	-}
-
-ul(class="nav nav-pills nav-justified difficulty", role="tablist")
-	li(class="easy diff-setting", data-diff="0")
-		a.home(href="javascript:;") Easy
-	li(class="medium diff-setting", class="active", data-diff="1")
-		a.resume(href="javascript:;") Medium
-	li(class="hard diff-setting", data-diff="2")
-		a.source(href="javascript:;") Hard
+div(class="difficulty nav")
+	a(href="javascript:;", class="easy diff-setting", data-diff="0") Easy
+	a(href="javascript:;", class="medium diff-setting active", data-diff="1") Medium
+	a(href="javascript:;", class="hard diff-setting", data-diff="2") Hard
 		
