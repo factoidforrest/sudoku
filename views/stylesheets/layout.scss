@@ -7,10 +7,47 @@
 
 
 body {
-	font-family: 'PT Sans',Georgia,Serif;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #333;
 	background-color: #E7E7E5 !important;
 }
 
+//override default border and margins
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.topbar h1 {
+	margin-top: 5px;
+	margin: .67em 0;
+	font-size: 2em;
+	font-size: 36px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+}
+
+
+.container {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.top-container {
+	width: 70%;
+}
+
+.clearfix:before, .clearfix:after { 
+	content: ""; 
+	display: table; 
+}
 
 .topbar {
 	color: whitesmoke;
@@ -20,8 +57,17 @@ body {
 	}
 }
 
-.main-nav {
+.navigation-row {
 	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	width:100%;
+	max-width: 550px;
+	a {
+		width: 33%;
+		display: inline-block;
+		text-align: center;
+	}
 }
 
 //board wrapper
@@ -174,7 +220,6 @@ body {
   	text-align: center;
 		font-size: 2.5em;
 		color: #E7E5E5;
-		
   }
   .active {
 		color: #777777;
@@ -191,11 +236,15 @@ body {
 	.page-header {
 		border-bottom: 1px solid #D3BFFD !important;
 	}
+	width: 48%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 @media (max-width: 700px) {
   .about {
   	font-size: 20px;
+  	width: 80%
   }
   .board {
   	min-width: 100% !important;
