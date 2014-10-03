@@ -16,11 +16,10 @@ app.locals.uglify = production
 app.set('view engine', 'jade')
 
 app.use(sass.middleware({
-    src: __dirname + '/views/stylesheets',
-    dest: __dirname + '/public',
-    debug: !production,
-    outputStyle: if production then 'compressed' else 'nested'
-
+  src: __dirname + '/views/stylesheets',
+  dest: __dirname + '/public',
+  debug: !production,
+  outputStyle: if production then 'compressed' else 'nested'
 }))
 
 #TODO: switch to a compiler with compression support
@@ -35,7 +34,7 @@ if production
 	cachetime = 86400000
 else
 	cachetime = 0
-	
+
 #static assets
 app.use(express.static(__dirname + '/public', { maxAge: cachetime }))
 
