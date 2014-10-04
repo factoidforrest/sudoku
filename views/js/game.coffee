@@ -9,7 +9,7 @@ define ["jquery", "libs/sudokugen"], ($) ->
 
 		newGame: ->
 			@sudoku._newGame()
-			this.render()			
+			this.render()     
 			this.registerListeners()
 
 		render: ->
@@ -18,7 +18,7 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				if num != 0
 					box.children('span').text(num)
 					box.addClass("fixed")
-				else	
+				else  
 					box.addClass("editable")
 					box.children('span').text("")
 
@@ -53,12 +53,12 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				else
 					$(this).addClass('selected')
 					self.selected = parseInt($(this).attr('data-box'))
-					self.showAvailable(self.selected)
 					contents = $(this).children('span')
 					#clear it if it was holding something. this is how delete works
 					if contents.text() != ''
 						contents.text('')
 						self.sudoku.setVal(self.indexToCoords(self.selected)..., 0)
+					self.showAvailable(self.selected)
 
 			$('.selection').on 'click', '.active', () ->
 				num = parseInt($(this).attr('data-choice'))
