@@ -33,33 +33,16 @@ define ["jquery", "libs/sudokugen"], ($) ->
 		registerListeners: ->
 			self = this
 			$(document).on 'keypress', (e) ->
-
 				pressed = String.fromCharCode(e.charCode) 
-
 				#if user entered a number
 				num = parseInt(pressed)
 				if !isNaN(num) and (num != 0)
 					self.playIfPossible(num, self.selected)
 
-			$('.editable').on 'click', (e) ->
-				if $(this).hasClass('selected')
-					unselecting = true
-				else
-					unselecting = false
-				$('.selected').removeClass('selected')
-				if unselecting
-					self.selected = null
-					$('.selection').children('.active').removeClass('active')
-				else
-					$(this).addClass('selected')
-					self.selected = parseInt($(this).attr('data-box'))
-					contents = $(this).children('span')
-					#clear it if it was holding something. this is how delete works
-					if contents.text() != ''
-						contents.text('')
-						self.sudoku.setVal(self.indexToCoords(self.selected)..., 0)
-					self.showAvailable(self.selected)
+			$('.editable').on 'click', () ->
+				self.handleClick(this)
 
+			#user chooses a number with the mouse
 			$('.selection').on 'click', '.active', () ->
 				num = parseInt($(this).attr('data-choice'))
 				self.playIfPossible(num, self.selected)
@@ -92,6 +75,25 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				setTimeout( () ->
 					$('.wrong').removeClass('wrong')
 				, 1000)
+
+		handleClick: (clicked) ->
+			if $(clicked).hasClass('selected')
+				unselecting = true
+			else
+				unselecting = false
+			$('.selected').removeClass('selected')
+			if unselecting
+				@selected = null
+				$('.selection').children('.active').removeClass('active')
+			else
+				$(clicked).addClass('selected')
+				@selected = parseInt($(clicked).attr('data-box'))
+				contents = $(clicked).children('span')
+				#clear it if it was holding something. this is how delete works
+				if contents.text() != ''
+					contents.text('')
+					@sudoku.setVal(@indexToCoords(@selected)..., 0)
+				@showAvailable(@selected)
 
 		showAvailable: (selected) ->
 			available = []
