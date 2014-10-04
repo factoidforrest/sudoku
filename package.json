@@ -28,7 +28,7 @@
     "url": "git://git@github.com:light24bulbs/sudoku.git"
   },
   "author": "Forrest Allison",
-  "license": "BSD-2-Clause",
+  "license": "GPL",
   "bugs": {
     "url": "https://github.com/light24bulbs/sudoku/issues"
   },
