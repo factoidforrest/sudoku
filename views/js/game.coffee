@@ -1,6 +1,4 @@
-
 ###
-
 UberSudoku
 v0.0
 Copyright (c) 2014, Forrest I. Allison
@@ -17,7 +15,6 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 ###
 
 define ["jquery", "libs/sudokugen"], ($) ->
@@ -99,10 +96,7 @@ define ["jquery", "libs/sudokugen"], ($) ->
 				, 1000)
 
 		handleClick: (clicked) ->
-			if $(clicked).hasClass('selected')
-				unselecting = true
-			else
-				unselecting = false
+			unselecting = $(clicked).hasClass('selected')
 			$('.selected').removeClass('selected')
 			if unselecting
 				@selected = null
